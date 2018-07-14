@@ -23,7 +23,7 @@ class NavigationManager @Inject constructor(fragmentManager: FragmentManager) {
 
     private fun addToBackStack(fragment: Fragment, tag: String) {
         mFragmentManager.beginTransaction()
-                .add(R.id.fragment_placeholder, fragment, tag)
+                .replace(R.id.fragment_placeholder, fragment, tag)
                 .addToBackStack(null)
                 .commit()
     }

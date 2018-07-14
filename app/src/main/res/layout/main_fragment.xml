@@ -1,17 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="200dp"
-    android:background="@drawable/tsaz_card"
+    android:background="@android:color/white"
     android:orientation="vertical">
 
-    <ImageView
+    <TextView
+        android:id="@+id/short_description"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/romanov"
-        />
+        android:textColor="@android:color/white"
+        android:background="@android:color/black"
+        android:text="Одним из его учителей был образованный монах из Речи Посполитой Симеон Полоцкий, прививший ему склонность ко всему польскому. Царь свободно говорил на польском. Некоторые исследователи предполагают, что он знал латынь. Фёдор Алексеевич интересовался европейской политикой. На заседаниях Боярской думы ему и боярам зачитывали составленные в Посольском приказе обзоры западной прессы (куранты)[2]. Увлекался музыкой и пением. К свадьбе царя Фёдора Алексеевича и Агафьи Грушецкой Симеон Полоцкий и новый придворный пиит и ученик Симеона, монах Сильвестр Медведев, сложили широковещательные оды на это «великое и радостное для всей земли Русской торжество».
 
-</LinearLayout>
+В первые месяцы царствования Фёдор Алексеевич тяжело болел и фактическими правителями государства были А. С. Матвеев, патриарх Иоаким и И. М. Милославский. Однако уже к середине 1676 года царь взял власть в свои руки, после чего Матвеев был отправлен в ссылку.
+
+Короткое царствование Фёдора Алексеевича ознаменовано некоторыми важными акциями и реформами. В 1678 году проведена общая перепись населения, в 1679 введено подворное обложение прямыми налогами, увеличившее податный гнёт. В военном деле в 1682 году отменено парализующее начальствование в армии местничество, в связи с этим сожжены разрядные книги. Тем самым был положен конец опасному обычаю бояр и дворян считаться с заслугами предков при занятии должности, главным критерием продвижения по службе стали личные способности и выслуга лет. Для сохранения памяти предков были введены родословные книги. В целях централизации государственного управления некоторые смежные приказы были объединены под руководством одного лица. Получили новое развитие полки иноземного строя[3].
+
+В 1676—1681 годы велась война против Османской империи и союзного с ней Крымского ханства, вызванная агрессивной политикой Порты на Украине. По Бахчисарайскому миру Турция признала за Россией Левобережную Украину и Киев."/>
+
+    <LinearLayout
+        android:id="@+id/title_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="-20dp"
+        android:orientation="vertical">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="@drawable/shadow"/>
+        <ImageView
+            android:src="@drawable/romanov"
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+</FrameLayout>
