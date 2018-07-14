@@ -1,15 +1,15 @@
 package com.syouth.tsarz.mainscreen
 
 import android.arch.lifecycle.ViewModelProviders
+import android.content.res.Resources
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.view.animation.LinearOutSlowInInterpolator
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
-import android.view.animation.OvershootInterpolator
+import android.view.animation.LinearInterpolator
 import android.view.animation.Transformation
 import android.widget.FrameLayout
 import com.syouth.tsarz.R
@@ -40,7 +40,7 @@ class MainFragment : Fragment() {
         inflatedView.findViewById<View>(R.id.title_image).setOnTouchListener { view, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
-                    mCurtainDelegate = CurtainDragDelegate(view, event.rawY, 250F)
+                    mCurtainDelegate = CurtainDragDelegate(view, event.rawY, -100F, 500F, Resources.getSystem().displayMetrics.heightPixels.toFloat() / 2)
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
@@ -53,13 +53,13 @@ class MainFragment : Fragment() {
                         override fun applyTransformation(interpolatedTime: Float, t: Transformation?) {
                             with(view) {
                                 val lp = layoutParams as FrameLayout.LayoutParams
-                                lp.topMargin = (250F - 250F * interpolatedTime).toInt()
+                                lp.topMargin = (500F - 600F * interpolatedTime).toInt()
                                 layoutParams = lp
                             }
                         }
                     }
-                    anim.duration = 150
-                    anim.interpolator = LinearOutSlowInInterpolator()
+                    anim.duration = 1500
+                    anim.interpolator = LinearInterpolator()
                     view.startAnimation(anim)
                     true
                 }
