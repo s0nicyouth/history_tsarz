@@ -4,14 +4,13 @@ import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 
-private fun Float.truncateToRange(min: Float, max: Float) = when {
+private fun Float.truncateToLowerBound(min: Float) = when {
     this < min -> 0F
-    this > max -> max
     else -> this
 }
 
-private fun calculateNewPosition(fraction: Float, dst: Float) = Math.cos(1.57 * fraction - Math.PI / 2) * dst
-private fun calculateFraction(pos: Float, dst: Float) = (-Math.acos((pos / dst).toDouble()) + Math.PI / 2) / 1.57
+private fun calculateNewPosition(fraction: Float, dst: Float) = (-Math.pow(Math.E, -4.3 * fraction) + 1) * dst
+private fun calculateFraction(pos: Float, dst: Float) = Math.log((1F - (pos / dst)).toDouble()) / -4.3
 
 class CurtainDragDelegate(
         private val mView: View,
@@ -28,7 +27,7 @@ class CurtainDragDelegate(
         mStartGone = (fraction * mPointerDistanceTotal).toFloat()
     }
 
-    fun update(curY: Float)  = moveView(((mStartGone + curY - mInitialPointerY) / mPointerDistanceTotal).truncateToRange(0F, 1F))
+    fun update(curY: Float)  = moveView(((mStartGone + curY - mInitialPointerY) / mPointerDistanceTotal).truncateToLowerBound(0F))
 
     private fun moveView(p: Float) = with(mView) {
         val lp = layoutParams as FrameLayout.LayoutParams

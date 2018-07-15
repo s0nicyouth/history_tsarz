@@ -8,10 +8,6 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.Animation
-import android.view.animation.LinearInterpolator
-import android.view.animation.Transformation
-import android.widget.FrameLayout
 import com.syouth.tsarz.R
 import com.syouth.tsarz.application.AppComponentHolder
 import com.syouth.tsarz.base.BaseComponentHolder
@@ -40,7 +36,11 @@ class MainFragment : Fragment() {
         inflatedView.findViewById<View>(R.id.title_image).setOnTouchListener { view, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
-                    mCurtainDelegate = CurtainDragDelegate(view, event.rawY, -100F, 500F, Resources.getSystem().displayMetrics.heightPixels.toFloat() / 2)
+                    view.clearAnimation()
+                    mCurtainDelegate = CurtainDragDelegate(
+                            view,
+                            event.rawY, -100F, 500F,
+                            Resources.getSystem().displayMetrics.heightPixels.toFloat() / 2)
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
@@ -49,18 +49,7 @@ class MainFragment : Fragment() {
                 }
                 MotionEvent.ACTION_UP -> {
                     mCurtainDelegate = null
-                    val anim = object : Animation() {
-                        override fun applyTransformation(interpolatedTime: Float, t: Transformation?) {
-                            with(view) {
-                                val lp = layoutParams as FrameLayout.LayoutParams
-                                lp.topMargin = (500F - 600F * interpolatedTime).toInt()
-                                layoutParams = lp
-                            }
-                        }
-                    }
-                    anim.duration = 1500
-                    anim.interpolator = LinearInterpolator()
-                    view.startAnimation(anim)
+                    animateBack(view, -100F)
                     true
                 }
                 else -> true
