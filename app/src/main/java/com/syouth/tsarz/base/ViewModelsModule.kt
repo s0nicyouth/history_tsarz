@@ -1,7 +1,8 @@
 package com.syouth.tsarz.base
 
 import android.arch.lifecycle.ViewModel
-import com.syouth.tsarz.mainscreen.MainFragmentViewModel
+import com.syouth.tsarz.cardsliderview.CardsPagerViewModel
+import com.syouth.tsarz.cardview.CardFragmentViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -10,6 +11,11 @@ import dagger.multibindings.IntoMap
 abstract class ViewModelsModule {
     @Binds
     @IntoMap
-    @ViewModelFactoryMapKey(MainFragmentViewModel::class)
-    abstract fun bindMainFragmentViewModel(viewModel: MainFragmentViewModel): ViewModel
+    @ViewModelFactoryMapKey(CardFragmentViewModel::class)
+    abstract fun bindMainFragmentViewModel(viewModel: CardFragmentViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelFactoryMapKey(CardsPagerViewModel::class)
+    abstract fun bindCardsPagerViewModel(viewModel: CardsPagerViewModel): ViewModel
 }

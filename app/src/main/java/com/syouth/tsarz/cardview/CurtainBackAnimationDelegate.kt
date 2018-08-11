@@ -1,4 +1,4 @@
-package com.syouth.tsarz.mainscreen
+package com.syouth.tsarz.cardview
 
 import android.view.View
 import android.view.animation.Animation
