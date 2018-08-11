@@ -1,20 +1,23 @@
 package com.syouth.tsarz.application
 
-import com.syouth.tsarz.base.BaseComponent
-import com.syouth.tsarz.mainscreen.ViewModelModule
+import android.content.Context
+import com.syouth.tsarz.base.TsarzActivityComponent
+import dagger.BindsInstance
 import dagger.Component
+import javax.inject.Singleton
 
-@Component(modules = [ApplicationModule::class, ViewModelModule::class])
-@ApplicationScope
+@Singleton
+@Component
 interface ApplicationComponent {
 
-    fun getBaseComponent(): BaseComponent.Builder
-
-    fun getViewModelsFactory(): ViewModelsFactory
+    fun getTsarzComponent(): TsarzActivityComponent.Builder
 
     @Component.Builder
     interface Builder {
 
-        fun build() : ApplicationComponent
+        @BindsInstance
+        fun context(context: Context): Builder
+
+        fun build(): ApplicationComponent
     }
 }

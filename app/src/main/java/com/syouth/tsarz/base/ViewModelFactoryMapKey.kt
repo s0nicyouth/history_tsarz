@@ -1,4 +1,4 @@
-package com.syouth.tsarz.application
+package com.syouth.tsarz.base
 
 import android.arch.lifecycle.ViewModel
 import dagger.MapKey

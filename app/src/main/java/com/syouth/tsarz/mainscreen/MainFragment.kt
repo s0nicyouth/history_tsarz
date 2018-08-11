@@ -9,13 +9,11 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import com.syouth.tsarz.R
-import com.syouth.tsarz.application.AppComponentHolder
-import com.syouth.tsarz.base.BaseComponentHolder
+import com.syouth.tsarz.application.ComponentsHolder
 
 class MainFragment : Fragment() {
 
     private lateinit var mViewModel: MainFragmentViewModel
-    private lateinit var mMainScreenComponent: MainScreenComponent
     private var mCurtainDelegate: CurtainDragDelegate? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,13 +21,12 @@ class MainFragment : Fragment() {
         retainInstance = true
 
         mViewModel = ViewModelProviders.of(
-                this, AppComponentHolder.get().getViewModelsFactory())
-                .get(MainFragmentViewModel::class.java)
+                this, ComponentsHolder.getTsarzComponent().getViewModelsFactory()).
+                get(MainFragmentViewModel::class.java)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        mMainScreenComponent = BaseComponentHolder.get().getMainScreenComponent().build()
 
         val inflatedView = inflater.inflate(R.layout.main_fragment, container, false)
 

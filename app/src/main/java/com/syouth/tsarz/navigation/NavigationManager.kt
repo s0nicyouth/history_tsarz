@@ -3,11 +3,11 @@ package com.syouth.tsarz.navigation
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import com.syouth.tsarz.R
-import com.syouth.tsarz.base.BaseScope
+import com.syouth.tsarz.base.TsarzActivityScope
 import com.syouth.tsarz.mainscreen.MainFragment
 import javax.inject.Inject
 
-@BaseScope
+@TsarzActivityScope
 class NavigationManager @Inject constructor(fragmentManager: FragmentManager) {
 
     companion object {

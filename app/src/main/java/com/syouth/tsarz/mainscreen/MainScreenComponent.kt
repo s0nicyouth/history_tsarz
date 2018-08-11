@@ -2,12 +2,13 @@ package com.syouth.tsarz.mainscreen
 
 import dagger.Subcomponent
 
-@Subcomponent
 @MainScreenScope
+@Subcomponent(modules = [MainScreenModule::class])
 interface MainScreenComponent {
 
     @Subcomponent.Builder
-    interface Builder{
+    interface Builder {
+
         fun build(): MainScreenComponent
     }
 }

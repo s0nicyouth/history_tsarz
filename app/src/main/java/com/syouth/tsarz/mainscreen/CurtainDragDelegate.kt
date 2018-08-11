@@ -1,6 +1,5 @@
 package com.syouth.tsarz.mainscreen
 
-import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 
@@ -31,7 +30,6 @@ class CurtainDragDelegate(
 
     private fun moveView(p: Float) = with(mView) {
         val lp = layoutParams as FrameLayout.LayoutParams
-        Log.d("Tsarz", p.toString())
         lp.topMargin = (mStartY + calculateNewPosition(p, mEndY - mStartY)).toInt()
         layoutParams = lp
     }

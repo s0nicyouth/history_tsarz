@@ -1,13 +1,12 @@
-package com.syouth.tsarz.application
+package com.syouth.tsarz.base
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
-import com.syouth.tsarz.base.BaseScope
 import javax.inject.Inject
 import javax.inject.Provider
 
 @Suppress("UNCHECKED_CAST")
-@ApplicationScope
+@TsarzActivityScope
 class ViewModelsFactory @Inject constructor(
         private val viewModelsMap: Map<Class<out ViewModel>,
                 @JvmSuppressWildcards Provider<ViewModel>>) : ViewModelProvider.Factory {

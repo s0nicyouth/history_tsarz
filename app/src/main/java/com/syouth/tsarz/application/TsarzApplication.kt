@@ -7,6 +7,6 @@ class TsarzApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        AppComponentHolder.init()
+        ComponentsHolder.initApplicationComponent(this)
     }
 }
